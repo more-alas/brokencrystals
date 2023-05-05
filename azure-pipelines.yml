@@ -1,0 +1,36 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- repeater
+
+pool:
+  vmImage: 'ubuntu-latest'
+strategy:
+  matrix:
+    node_12_x:
+      node_version: 12.x
+
+steps:
+- task: NodeTool@0 
+  inputs:
+    versionSpec: $(node_version)
+
+- script: |
+    npm install
+    npm install @neuralegion/nexploit-cli -g || true
+      echo "Start NeuraLegion Scan 🏁"
+      SCAN_ID=$(nexploit-cli scan:run --token apikey  --name "Azure Scan from Cloud" --crawler https://brokencrystals.com/ --smart  --test dom_xss xss default_login_location header_security secret_tokens directory_listing full_path_disclosure)
+      echo "Scan was started with ID https://app.neuralegion.com/scans/$SCAN_ID"
+      sleep 10
+      echo "Wait for issues ⏳\n"
+      RESULT=$(nexploit-cli scan:polling --interval 30s --timeout 20m --token apikey --breakpoint medium_issue $SCAN_ID)
+      if [ -z "$RESULT" ]
+      then
+          echo "Failed to stop scan"
+      else
+          echo "Stop Scan 🛑"
+          nexploit-cli scan:stop --token apikey $SCAN_ID
+      fi
