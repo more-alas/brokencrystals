@@ -22,15 +22,15 @@ steps:
     npm install
     npm install @neuralegion/nexploit-cli -g || true
       echo "Start NeuraLegion Scan 🏁"
-      SCAN_ID=$(nexploit-cli scan:run --token apikey  --name "Azure Scan from Cloud" --crawler https://brokencrystals.com/ --smart  --test dom_xss xss default_login_location header_security secret_tokens directory_listing full_path_disclosure)
-      echo "Scan was started with ID https://app.neuralegion.com/scans/$SCAN_ID"
+      SCAN_ID=$(nexploit-cli scan:run --token uruq27v.nexr.yypfphnv5gdwioyinmnu4npvtft2phtx  --name "Azure BC Scan from Cloud, Scan 1" --archive eSBqi9G5aiJtGBGA9w17LZ --smart  --test csrf unvalidated_redirect http_method_fuzzing insecure_tls_configuration dom_xss xss full_path_disclosure open_buckets --project vQZ82RZxRQCPpfF6zqS5Ur --auth fC9tXQzQxV4w4HwFL1yxH3 --cluster demo.brightsec.com)
+      echo "Scan was started with ID https://demo.brightsec.com/scans/$SCAN_ID"
       sleep 10
       echo "Wait for issues ⏳\n"
-      RESULT=$(nexploit-cli scan:polling --interval 30s --timeout 20m --token apikey --breakpoint medium_issue $SCAN_ID)
+      RESULT=$(nexploit-cli scan:polling --interval 30s --timeout 20m --token uruq27v.nexr.yypfphnv5gdwioyinmnu4npvtft2phtx --breakpoint high_issue $SCAN_ID --cluster demo.brightsec.com)
       if [ -z "$RESULT" ]
       then
-          echo "Failed to stop scan"
+          echo "No need to stop scan"
       else
           echo "Stop Scan 🛑"
-          nexploit-cli scan:stop --token apikey $SCAN_ID
+          nexploit-cli scan:stop --token uruq27v.nexr.yypfphnv5gdwioyinmnu4npvtft2phtx $SCAN_ID
       fi
