@@ -32,5 +32,5 @@ steps:
           echo "No need to stop scan"
       else
           echo "Stop Scan 🛑"
-          nexploit-cli scan:stop --token uruq27v.nexr.yypfphnv5gdwioyinmnu4npvtft2phtx $SCAN_ID
+          nexploit-cli scan:stop --token uruq27v.nexr.yypfphnv5gdwioyinmnu4npvtft2phtx $SCAN_ID --cluster demo.brightsec.com
       fi
