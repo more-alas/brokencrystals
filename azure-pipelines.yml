@@ -21,12 +21,12 @@ steps:
 - script: |
     npm install @brightsec/cli -g || true
       echo "Start Bright Scan 🏁"
-      SCAN_ID=$(bright-cli scan:run --token 3mw20ij.nexr.oyij0hjzq0jfsgkfzaa88h0hipud3zrr  --name "Azure smallcrystals BC Scan from Cloud, Scan 5" --archive gWC3YDX2CAWpB5mUk9jg2Z --smart  --test csrf unvalidated_redirect http_method_fuzzing insecure_tls_configuration sqli xss full_path_disclosure open_cloud_storage --project 2TqNHzBx565h9BUHbJq7DE --auth bQAugBMJeu18DjGE9GYbHH --cluster app.brightsec.com)
+      SCAN_ID=$(bright-cli scan:run --token 3mw20ij.nexr.oyij0hjzq0jfsgkfzaa88h0hipud3zrr  --name "Azure smallcrystals BC Scan from Cloud, Scan 6" --archive gWC3YDX2CAWpB5mUk9jg2Z --smart  --test csrf unvalidated_redirect http_method_fuzzing insecure_tls_configuration sqli xss full_path_disclosure open_cloud_storage --project 2TqNHzBx565h9BUHbJq7DE --auth bQAugBMJeu18DjGE9GYbHH --cluster app.brightsec.com)
       echo "$SCAN_ID"
       echo "Scan was started and can be checked at https://app.brightsec.com/scans/$SCAN_ID"
       sleep 10
       echo "Wait for issues ⏳\n"
-      POLLING_RESULT=$(bright-cli scan:polling --interval 30s --timeout 7200 --token 3mw20ij.nexr.oyij0hjzq0jfsgkfzaa88h0hipud3zrr --breakpoint high_issue $SCAN_ID --cluster app.brightsec.com)
+      POLLING_RESULT=$(bright-cli scan:polling --interval 30s --timeout 7200 --token 3mw20ij.nexr.oyij0hjzq0jfsgkfzaa88h0hipud3zrr --breakpoint medium_issue $SCAN_ID --cluster app.brightsec.com)
       echo "Polling result is $POLLING_RESULT "
       echo $POLLING_RESULT > ./polling_result
       echo "poling result is ..."
