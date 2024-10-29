@@ -21,7 +21,7 @@ steps:
     BRIGHT_TOKEN=3mw20ij.nexr.oyij0hjzq0jfsgkfzaa88h0hipud3zrr
     PROJECT_ID=2TqNHzBx565h9BUHbJq7DE
     echo "Start Bright Scan 🏁"
-    SCAN_ID=$(bright-cli scan:run --token $BRIGHT_TOKEN  --name "Azure smallcrystals BC Scan from Cloud, Scan 13" --archive gWC3YDX2CAWpB5mUk9jg2Z --smart  --test csrf unvalidated_redirect http_method_fuzzing insecure_tls_configuration sqli xss full_path_disclosure open_cloud_storage --project $PROJECT_ID --auth bQAugBMJeu18DjGE9GYbHH --cluster app.brightsec.com)
+    SCAN_ID=$(bright-cli scan:run --token $BRIGHT_TOKEN  --name "Azure smallcrystals BC Scan from Cloud, Scan 17" --archive gWC3YDX2CAWpB5mUk9jg2Z --smart  --test csrf unvalidated_redirect http_method_fuzzing insecure_tls_configuration sqli xss full_path_disclosure open_cloud_storage --project $PROJECT_ID --auth bQAugBMJeu18DjGE9GYbHH --cluster app.brightsec.com)
     echo "Scan was started and can be checked at https://app.brightsec.com/scans/$SCAN_ID"
     sleep 10
     echo "Wait for issues ⏳\n"
