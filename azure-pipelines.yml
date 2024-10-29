@@ -21,7 +21,7 @@ steps:
     BRIGHT_TOKEN=3mw20ij.nexr.oyij0hjzq0jfsgkfzaa88h0hipud3zrr
     PROJECT_ID=2TqNHzBx565h9BUHbJq7DE
     echo "Start Bright Scan 🏁"
-    SCAN_ID=$(bright-cli scan:run --token $BRIGHT_TOKEN  --name "Azure smallcrystals BC Scan from Cloud, Scan 21" --archive gWC3YDX2CAWpB5mUk9jg2Z --smart  --test csrf unvalidated_redirect http_method_fuzzing insecure_tls_configuration sqli xss full_path_disclosure open_cloud_storage --project $PROJECT_ID --auth bQAugBMJeu18DjGE9GYbHH --cluster app.brightsec.com)
+    SCAN_ID=$(bright-cli scan:run --token $BRIGHT_TOKEN  --name "Azure smallcrystals BC Scan from Cloud, Scan 23" --archive gWC3YDX2CAWpB5mUk9jg2Z --smart  --test csrf unvalidated_redirect http_method_fuzzing insecure_tls_configuration sqli xss full_path_disclosure open_cloud_storage --project $PROJECT_ID --auth bQAugBMJeu18DjGE9GYbHH --cluster app.brightsec.com)
     echo "Scan was started and can be checked at https://app.brightsec.com/scans/$SCAN_ID"
     sleep 10
     echo "Wait for issues ⏳\n"
@@ -40,7 +40,7 @@ steps:
     fi
 
     jq --version
-    
+
     GET_ID=$(curl -s -X 'GET' 'https://app.brightsec.com/api/v1/scans/'$SCAN_ID'/issues' -H 'accept: application/json' -H 'Authorization: Api-Key '$BRIGHT_TOKEN'' | jq '.[].id' )
     ISSUES_ID_ARRAY=$(sed -e 's/^"//' -e 's/"$//' <<<"$GET_ID")
     a=(); while read -r line; do a+=("$line"); done <<<"$ISSUES_ID_ARRAY"; declare a;
@@ -84,7 +84,7 @@ steps:
     GET_PROJECTISSUES=$(curl -s -X 'GET' 'https://app.brightsec.com/api/v1/projects/'$PROJECT_ID'/issues' -H 'accept: application/json' -H 'Authorization: Api-Key '$BRIGHT_TOKEN'')
 
     echo "We found ${#a[*]} vulnerabilities in this scan"
-    echo "We found  ${#l[*]} issues in this project and now we will filter them and send just new vulnerabilities to Jira"
+    echo "There are a total of  ${#l[*]} issues in this project."
       len=0
       for t in ${a[@]}; do
           let len=len+1
