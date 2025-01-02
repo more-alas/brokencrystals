@@ -22,10 +22,10 @@ steps:
     PROJECT_ID=15Tm66yFpSCqrPLV4VAhFa
     AUTH_ID=hhFgTRvVKQ8iWCwLJYpnZs
     REPEATER_ID=aq7hzYrBpLcE763eUfQodA
-    SCAN_NAME="Azure JuiceBar EP Scan from Cloud, Scan 5"
+    SCAN_NAME="Azure JuiceBar EP Scan from Cloud, Scan 6"
     echo "Scan Name will be $SCAN_NAME."
     echo "Start Bright Scan 🏁"
-    SCAN_ID=$(bright-cli scan:run --token $BRIGHT_TOKEN  --name "$SCAN_NAME" --smart --param query fragment body --test jwt brute_force_login common_files cookie_security csrf dom_xss css_injection default_login_location directory_listing email_injection file_upload full_path_disclosure header_security html_injection http_method_fuzzing iframe_injection improper_asset_management lfi open_database osi proto_pollution rfi secret_tokens ssti server_side_js_injection ssrf sqli stored_xss unvalidated_redirect version_control_systems xxe xpathi business_constraint_bypass date_manipulation excessive_data_exposure id_enumeration mass_assignment cve_test retire_js --project $PROJECT_ID --entrypoint --repeater $REPEATER_ID --cluster app.brightsec.com)
+    SCAN_ID=$(bright-cli scan:run --token $BRIGHT_TOKEN  --name "$SCAN_NAME" --smart --param query fragment body --test jwt brute_force_login common_files cookie_security csrf xss css_injection default_login_location directory_listing email_injection file_upload full_path_disclosure header_security html_injection http_method_fuzzing iframe_injection improper_asset_management lfi open_database osi proto_pollution rfi secret_tokens ssti server_side_js_injection ssrf sqli stored_xss unvalidated_redirect version_control_systems xxe xpathi business_constraint_bypass date_manipulation excessive_data_exposure id_enumeration mass_assignment cve_test retire_js --project $PROJECT_ID --entrypoint --repeater $REPEATER_ID --cluster app.brightsec.com)
     echo "Scan ID is $SCAN_ID"
     echo "Scan was started and can be checked at https://app.brightsec.com/scans/$SCAN_ID"
     sleep 10
